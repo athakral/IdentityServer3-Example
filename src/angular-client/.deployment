@@ -1,3 +1,3 @@
 [config]
 project = src\angular-client
-command = deploy.cmd
+command = src\angular-client\deploy.cmd
