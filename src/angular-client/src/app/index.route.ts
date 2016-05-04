@@ -8,5 +8,5 @@ export function routerConfig($stateProvider: angular.ui.IStateProvider, $urlRout
       controllerAs: 'main'
     });
 
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/devices');
 }

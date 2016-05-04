@@ -15,7 +15,7 @@ declare var moment: moment.MomentStatic;
 module angularClient {
   'use strict';
 
-  angular.module('angularClient', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'restangular', 'ui.router', 'ui.bootstrap', 'toastr'])
+  angular.module('angularClient', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngMessages', 'ngAria', 'restangular', 'ui.router', 'ui.bootstrap', 'toastr', 'devices'])
     .constant('malarkey', malarkey)
     .constant('moment', moment)
     .config(config)

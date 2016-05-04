@@ -1,37 +1,25 @@
-import { WebDevTecService, ITecThing } from '../components/webDevTec/webDevTec.service';
-
-export class DeviceController {
-  public awesomeThings: ITecThing[];
-  public webDevTec: WebDevTecService;
-  public classAnimation: string;
-  public creationDate: number;
+export class DevicesController {
+  public devices: any;
   public toastr: any;
-
+  public $http: angular.IHttpService;
   /* @ngInject */
-  constructor ($timeout: angular.ITimeoutService, webDevTec: WebDevTecService, toastr: any) {
-    this.awesomeThings = new Array();
-    this.webDevTec = webDevTec;
-    this.classAnimation = '';
-    this.creationDate = 1461531502155;
+  constructor ($timeout: angular.ITimeoutService, toastr: any, $http: angular.IHttpService) {
+    this.devices = new Array();
     this.toastr = toastr;
-    this.activate($timeout);
+    this.$http = $http;
+    this.activate();
   }
 
-  /** @ngInject */
-  activate($timeout: angular.ITimeoutService) {
-    this.getWebDevTec();
-
-    $timeout(() => {
-      this.classAnimation = 'rubberBand';
-    }, 4000);
+  activate() {
+    this.getDevices();
   }
 
-  showToastr() {
-    this.toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
-    this.classAnimation = '';
-  }
-
-  getWebDevTec() {
-    this.awesomeThings = this.webDevTec.tec;
+  getDevices() {
+    this.$http.get('https://1bfmj6xnf7.execute-api.us-east-1.amazonaws.com/dev/devices')
+    .then((response: any) => {
+      this.devices = response.data.Items;
+      // console.log(data);
+    });
+    ;
   }
 }
